@@ -1,7 +1,8 @@
 namespace DC20Models.nUnitTests; 
-public class Tests {
+public class CharacterTests {
     [SetUp]
     public void Setup() {
+
     }
 
     [Test]
