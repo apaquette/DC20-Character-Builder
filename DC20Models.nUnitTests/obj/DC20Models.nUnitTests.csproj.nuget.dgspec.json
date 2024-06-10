@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\DC20Models.csproj": {}
+    "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\DC20Models.csproj": {
+    "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\DC20Models.csproj",
-        "projectName": "DC20Models",
-        "projectPath": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\DC20Models.csproj",
+        "projectUniqueName": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj",
+        "projectName": "DC20Models.nUnitTests",
+        "projectPath": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj",
         "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\obj\\",
+        "outputPath": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,28 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.14.0, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.9.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
