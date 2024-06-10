@@ -3,42 +3,23 @@ using Models;
 namespace DC20Models.nUnitTests; 
 public class CharacterTests {
     private Character? _character = null!;
+    private static IEnumerable<TestCaseData> CMCalc {
+        get 
+        {
+            yield return new TestCaseData(1).Returns(1).SetName("WhenCharacterLevel1_ThenReturnsCombatMastery");
+            yield return new TestCaseData(2).Returns(1).SetName("WhenCharacterLevel2_ThenReturnsCombatMastery");
+            yield return new TestCaseData(5).Returns(3).SetName("WhenCharacterLevel5_ThenReturnsCombatMastery");
+            yield return new TestCaseData(12).Returns(6).SetName("WhenCharacterLevel12_ThenReturnsCombatMastery");
+            yield return new TestCaseData(17).Returns(9).SetName("WhenCharacterLevel17_ThenReturnsCombatMastery");
+            yield return new TestCaseData(20).Returns(10).SetName("WhenCharacterLevel20_ThenReturnsCombatMastery");
+        }
+    }
     [SetUp]
     public void Setup() {
         _character = new();
     }
 
-    [Test]
-    public void Character_LevelOneCMCalculation() {
-        _character = new();
-        Assert.That(_character.CombatMastery, Is.EqualTo(1));
-    }
-
-    [Test]
-    public void Character_LevelTwoCMCalculation() {
-        _character = new(2);
-        Assert.That(_character.CombatMastery, Is.EqualTo(1));
-    }
-
-    [Test]
-    public void Character_LevelFiveCMCalculation() {
-        _character = new(5);
-        Assert.That(_character.CombatMastery, Is.EqualTo(3));
-    }
-
-    [Test]
-    public void Character_LevelTwelveCMCalculation() {
-        _character = new(12);
-        Assert.That(_character.CombatMastery, Is.EqualTo(6));
-    }
-    [Test]
-    public void Character_LevelSeventeenCMCalculation() {
-        _character = new(17);
-        Assert.That(_character.CombatMastery, Is.EqualTo(9));
-    }
-    [Test]
-    public void Character_LevelTwentyCMCalculation() {
-        _character = new(20);
-        Assert.That(_character.CombatMastery, Is.EqualTo(10));
-    }
+    [Test, TestCaseSource(nameof(CMCalc))]
+    public int CMCalcTest(int level) => new Character(level).CombatMastery;
+    
 }
