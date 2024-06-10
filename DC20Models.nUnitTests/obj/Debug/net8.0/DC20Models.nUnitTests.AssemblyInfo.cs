@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DC20Models.nUnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52c4b566fddcd260b8f010bb0c248568239fb412")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5a7b78dcd3ffdc6fea5bae10559e894a36ce91a")]
 [assembly: System.Reflection.AssemblyProductAttribute("DC20Models.nUnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DC20Models.nUnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
