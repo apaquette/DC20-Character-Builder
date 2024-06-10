@@ -10,6 +10,6 @@ public class CharacterTests {
 
     [Test]
     public void Character_LevelOneCMCalculation() {
-        Assert.Equals(1, _character.CombatMastery);
+        Assert.AreEqual(1, _character.CombatMastery);
     }
 }
