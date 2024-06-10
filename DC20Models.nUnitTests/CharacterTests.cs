@@ -10,6 +10,13 @@ public class CharacterTests {
 
     [Test]
     public void Character_LevelOneCMCalculation() {
-        Assert.AreEqual(1, _character.CombatMastery);
+        _character = new();
+        Assert.That(_character.CombatMastery, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Character_LevelTwoCMCalculation() {
+        _character = new Character(2);
+        Assert.That(_character.CombatMastery, Is.EqualTo(1));
     }
 }
