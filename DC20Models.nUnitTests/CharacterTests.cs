@@ -19,4 +19,10 @@ public class CharacterTests {
         _character = new Character(2);
         Assert.That(_character.CombatMastery, Is.EqualTo(1));
     }
+
+    [Test]
+    public void Character_LevelFiveCMCalculation() {
+        _character = new Character(5);
+        Assert.That(_character.CombatMastery, Is.EqualTo(3));
+    }
 }
