@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{090353EF-1C9C-4C95-87DE-1F0E29315590}|DC20Models.csproj|d:\\projects\\blazor\\dc20 character sheet\\dc20models\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{090353EF-1C9C-4C95-87DE-1F0E29315590}|DC20Models.csproj|solutionrelative:class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 301,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Class1.cs",
+              "RelativeDocumentMoniker": "Class1.cs",
+              "ToolTip": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Class1.cs",
+              "RelativeToolTip": "Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T19:30:38.393Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
