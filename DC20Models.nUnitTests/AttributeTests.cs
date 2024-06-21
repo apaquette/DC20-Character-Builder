@@ -7,7 +7,7 @@ public class AttributeTests {
     [TestCase(3, false, 3, 1)]
     public void Attribute_ValueTest(int expected, bool save, int value, int level) {
         Character thecharacter = LevelUpTo(new(), level);
-        Attribute attribute = new(() => thecharacter.CombatMastery, value, save);
+        Attribute attribute = new(() => thecharacter.CombatMastery, value, save, () => thecharacter.AttributeLimit);
 
         Assert.That((int)attribute, Is.EqualTo(expected));
     }
@@ -17,7 +17,7 @@ public class AttributeTests {
     public void Attribute_ValueTest_Invalid(bool save, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
             Character thecharacter = LevelUpTo(new(), level);
-            Attribute attribute = new(() => thecharacter.CombatMastery, value, save);
+            Attribute attribute = new(() => thecharacter.CombatMastery, value, save, () => thecharacter.AttributeLimit);
         });
     }
 
@@ -26,7 +26,7 @@ public class AttributeTests {
     [TestCase(3, true, 1, 4)]
     public void Attribute_SaveTest(int expected, bool save, int value, int level) {
         Character thecharacter = LevelUpTo(new(), level);
-        Attribute attribute = new(() => thecharacter.CombatMastery, value, save);
+        Attribute attribute = new(() => thecharacter.CombatMastery, value, save, () => thecharacter.AttributeLimit);
 
         Assert.That(attribute.Save, Is.EqualTo(expected));
     }
