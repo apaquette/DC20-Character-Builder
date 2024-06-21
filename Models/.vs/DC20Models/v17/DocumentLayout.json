@@ -6,11 +6,11 @@
       "AbsoluteMoniker": "D:0:0:{647563CF-EF4C-498C-A0B6-733055F52930}|..\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj|d:\\projects\\blazor\\dc20 character sheet\\dc20models\\dc20models.nunittests\\attributetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{647563CF-EF4C-498C-A0B6-733055F52930}|..\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj|d:\\projects\\blazor\\dc20 character sheet\\dc20models\\dc20models.nunittests\\charactertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{090353EF-1C9C-4C95-87DE-1F0E29315590}|DC20Models.csproj|d:\\projects\\blazor\\dc20 character sheet\\dc20models\\models\\attribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{090353EF-1C9C-4C95-87DE-1F0E29315590}|DC20Models.csproj|solutionrelative:attribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647563CF-EF4C-498C-A0B6-733055F52930}|..\\DC20Models.nUnitTests\\DC20Models.nUnitTests.csproj|d:\\projects\\blazor\\dc20 character sheet\\dc20models\\dc20models.nunittests\\charactertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{090353EF-1C9C-4C95-87DE-1F0E29315590}|DC20Models.csproj|d:\\projects\\blazor\\dc20 character sheet\\dc20models\\models\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -36,7 +36,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CharacterTests.cs",
               "DocumentMoniker": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\CharacterTests.cs",
               "RelativeDocumentMoniker": "..\\DC20Models.nUnitTests\\CharacterTests.cs",
@@ -55,20 +55,20 @@
               "RelativeDocumentMoniker": "..\\DC20Models.nUnitTests\\AttributeTests.cs",
               "ToolTip": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\DC20Models.nUnitTests\\AttributeTests.cs",
               "RelativeToolTip": "..\\DC20Models.nUnitTests\\AttributeTests.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBIAAAA5AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-21T16:05:21.899Z",
+              "WhenOpened": "2024-06-21T18:36:21.121Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Attribute.cs",
               "DocumentMoniker": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\Attribute.cs",
               "RelativeDocumentMoniker": "Attribute.cs",
               "ToolTip": "D:\\Projects\\Blazor\\DC20 Character Sheet\\DC20Models\\Models\\Attribute.cs",
               "RelativeToolTip": "Attribute.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAA2wBEAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-21T16:07:47.469Z",
               "EditorCaption": ""

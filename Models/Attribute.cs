@@ -16,3 +16,6 @@ public class Attribute {
         return attribute.Value;
     }
 }
+public class InvalidAttributeException : Exception {
+
+}
