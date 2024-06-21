@@ -1,4 +1,4 @@
-﻿namespace DC20Models;
+﻿namespace Models;
 public class Attribute {
     private readonly Func<int> _combatMastery;
     private readonly Func<int> _attributeLimit;
