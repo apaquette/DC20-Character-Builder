@@ -14,8 +14,10 @@ public class Character {
                     return 4;
                 case var _ when Level < 15:
                     return 5;
-                default:
+                case var _ when Level < 20:
                     return 6;
+                default:
+                    return 7;
             }
         }
     }
