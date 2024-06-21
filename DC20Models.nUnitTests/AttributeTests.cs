@@ -13,6 +13,7 @@ public class AttributeTests {
     }
 
     [TestCase(false, -3, 1)]
+    [TestCase(false, 4, 1)]
     public void Attribute_ValueTest_Invalid(bool save, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
             Character thecharacter = LevelUpTo(new(), level);
