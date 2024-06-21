@@ -3,6 +3,11 @@ public class Attribute {
     private readonly Func<int> _combatMastery;
 
     public Attribute(Func<int> combatMastery, int value, bool saveProficiency) {
+
+        if(value < -2) {
+            throw new InvalidAttributeException("Value cannot be less than -2");
+        }
+
         _combatMastery = combatMastery;
         Value = value;
         SaveProficiency = saveProficiency;
@@ -17,5 +22,10 @@ public class Attribute {
     }
 }
 public class InvalidAttributeException : Exception {
+    public InvalidAttributeException() {
+    }
 
+    public InvalidAttributeException(string message)
+        : base(message) {
+    }
 }
