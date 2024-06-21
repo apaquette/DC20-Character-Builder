@@ -7,15 +7,16 @@ public class Character {
     public int CombatMastery => (int)Math.Ceiling((double)Level / 2);
     public int AttributeLimit {
         get {
-            if (Level < 5) {
-                return 3;
+            switch (Level) {
+                case var _ when Level < 5:
+                    return 3;
+                case var _ when Level < 10:
+                    return 4;
+                case var _ when Level < 15:
+                    return 5;
+                default:
+                    return 6;
             }
-            else if (Level < 10) {
-                return 4;
-            }else if(Level < 15) {
-                return 5;
-            }
-            return 6;
         }
     }
 
