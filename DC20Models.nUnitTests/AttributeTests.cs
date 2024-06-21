@@ -1,4 +1,5 @@
 ﻿using Models;
+using Attribute = Models.Attribute;
 
 namespace DC20Models.nUnitTests; 
 public class AttributeTests {
