@@ -5,7 +5,7 @@ public class Character {
     public string? Name { get; set; }
     public int Level { get; private set; }
     public int CombatMastery => (int)Math.Ceiling((double)Level / 2);
-    public int AttributeLimit => 3;
+    public int AttributeLimit => Level > 5 ? 3 : 4;
 
     // ATTRIBUTES
     public int Prime => (new int[] {Might, Agility, Charisma, Intelligence}).Max(x => x);
