@@ -22,6 +22,7 @@ public class CharacterTests {
 
     [TestCase(3, 1)]
     [TestCase(3, 3)]
+    [TestCase(4, 5)]
     public void AttributeLimit(int expected, int level) {
         Character character = LevelUpTo(new(), level);
         Assert.That(character.AttributeLimit, Is.EqualTo(expected));
