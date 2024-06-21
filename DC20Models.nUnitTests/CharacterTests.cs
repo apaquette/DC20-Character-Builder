@@ -16,8 +16,14 @@ public class CharacterTests {
     [TestCase(9, 17)]
     [TestCase(10, 20)]
     public void CombatMastery_CalcTest(int expected, int level) {
-        Character character = LevelUpTo(_character, level);
+        Character character = LevelUpTo(new(), level);
         Assert.That(character.CombatMastery, Is.EqualTo(expected));
+    }
+
+    [TestCase(3, 1)]
+    public void AttributeLimit(int expected, int level) {
+        Character character = LevelUpTo(new(), level);
+        Assert.That(character.AttributeLimit, Is.EqualTo(expected));
     }
 
     private Character LevelUpTo(Character character, int level) {
