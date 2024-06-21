@@ -12,8 +12,10 @@ public class Character {
             }
             else if (Level < 10) {
                 return 4;
+            }else if(Level < 15) {
+                return 5;
             }
-            return 5;
+            return 6;
         }
     }
 
