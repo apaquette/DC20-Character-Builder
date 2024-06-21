@@ -4,6 +4,7 @@ namespace DC20Models.nUnitTests;
 public class AttributeTests {
     [TestCase(1, false, 1, 1)]
     [TestCase(-2, false, -2, 1)]
+    [TestCase(3, false, 3, 1)]
     public void Attribute_ValueTest(int expected, bool save, int value, int level) {
         Character thecharacter = LevelUpTo(new(), level);
         Attribute attribute = new(() => thecharacter.CombatMastery, value, save);
