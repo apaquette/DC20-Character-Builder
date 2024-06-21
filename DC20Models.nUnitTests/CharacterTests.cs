@@ -2,13 +2,6 @@ using Models;
 
 namespace DC20Models.nUnitTests; 
 public class CharacterTests {
-    private Character? _character = null!;
-    [SetUp]
-    public void Setup() {
-        _character = new();
-    }
-
-    
     [TestCase(1, 1)]
     [TestCase(1, 2)]
     [TestCase(3, 5)]

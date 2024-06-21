@@ -2,9 +2,6 @@
 
 namespace DC20Models.nUnitTests; 
 public class AttributeTests {
-    private Attribute? _attribute = null;
-    private Character? _character = new Character();
-
     [TestCase(1, false, 1, 1)]
     [TestCase(-2, false, -2, 1)]
     public void Attribute_ValueTest(int expected, bool save, int value, int level) {
@@ -24,10 +21,10 @@ public class AttributeTests {
 
     [TestCase(1, false, 1, 1)]
     [TestCase(2, true, 1, 1)]
-    [TestCase(2, true, 1, 4)]
+    [TestCase(3, true, 1, 4)]
     public void Attribute_SaveTest(int expected, bool save, int value, int level) {
         Character thecharacter = LevelUpTo(new(), level);
-        Attribute attribute = new(() => _character.CombatMastery, value, save);
+        Attribute attribute = new(() => thecharacter.CombatMastery, value, save);
 
         Assert.That(attribute.Save, Is.EqualTo(expected));
     }
