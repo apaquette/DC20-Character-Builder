@@ -24,10 +24,15 @@ public class Character {
     public Attribute Charisma { get; }
     public Attribute Intelligence { get; }
 
-    public Character(string? playerName = null, string? name = null) {
+    public Character(string? playerName = null, string? name = null, int might = 0, int agi = 0, int cha = 0, int inte = 0) {
         PlayerName = playerName;
         Name = name;
         Level = 1;
+
+        Might = new(() => CombatMastery, might, false, () => AttributeLimit);
+        Agility = new(() => CombatMastery, agi, false, () => AttributeLimit);
+        Charisma = new(() => CombatMastery, cha, false, () => AttributeLimit);
+        Intelligence = new(() => CombatMastery, inte, false, () => AttributeLimit);
     }
 
     public void LevelUp() {
