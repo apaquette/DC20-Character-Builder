@@ -27,7 +27,7 @@ public class CharacterTests {
         Assert.That(character.AttributeLimit, Is.EqualTo(expected));
     }
 
-    [TestCase(3, 1, 3, 2, 2, 2)]
+    [TestCase(3, 1, 3, 1, 2, -2)]
     public void PrimeAttribute(int expected, int level, int might, int agi, int cha, int inte) {
         Character character = LevelUpTo(new(null, null, might, agi, cha, inte), level);
         Assert.That(character.Prime, Is.EqualTo(expected));
