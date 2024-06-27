@@ -7,7 +7,7 @@ namespace Models;
 public class Character {
     public string? Player { get; set; }
     public string? Name { get; set; }
-    public int Level { get; private set; }
+    public int Level => CharacterClass.Level;
     public int CombatMastery => (int)Math.Ceiling((double)Level / 2);
 
     public ICharacterClass CharacterClass {get; private set;}
@@ -36,18 +36,18 @@ public class Character {
     public Character(ICharacterClass characterClass, IAncestry ancestry, int might = 0, int agi = 0, int cha = 0, int inte = 0, string? player = null, string? name = null) {
         Player = player;
         Name = name;
-        Level = 1;
+
+        CharacterClass = characterClass;
+        Ancestry = ancestry;
 
         Might = new(() => CombatMastery, might, false, () => AttributeLimit);
         Agility = new(() => CombatMastery, agi, false, () => AttributeLimit);
         Charisma = new(() => CombatMastery, cha, false, () => AttributeLimit);
         Intelligence = new(() => CombatMastery, inte, false, () => AttributeLimit);
 
-        CharacterClass = characterClass;
-        Ancestry = ancestry;
     }
 
     public void LevelUp() {
-        ++Level;
+        CharacterClass.LevelUp();
     }
 }

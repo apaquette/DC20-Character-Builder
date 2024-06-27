@@ -4,7 +4,6 @@ using Models.Ancestries;
 
 namespace DC20Models.nUnitTests;
 public class CharacterTests {
-    private ICharacterClass Commander = new Commander();
     private IAncestry Human = new Human();
 
 
@@ -15,7 +14,7 @@ public class CharacterTests {
     [TestCase(9, 17)]
     [TestCase(10, 20)]
     public void CombatMastery_CalcTest(int expected, int level) {
-        Character character = LevelUpTo(new(Commander, new Human()), level);
+        Character character = LevelUpTo(new(new Commander(), new Human()), level);
         Assert.That(character.CombatMastery, Is.EqualTo(expected));
     }
 
@@ -29,7 +28,7 @@ public class CharacterTests {
     [TestCase(6, 18)]
     [TestCase(7, 20)]
     public void AttributeLimit(int expected, int level) {
-        Character character = LevelUpTo(new(Commander, new Human()), level);
+        Character character = LevelUpTo(new(new Commander(), new Human()), level);
         Assert.That(character.AttributeLimit, Is.EqualTo(expected));
     }
 
@@ -39,7 +38,7 @@ public class CharacterTests {
     [TestCase(3, 1, 1, 2, -2, 3)]
     [TestCase(3, 1, 3, 3, 0, -2)]
     public void PrimeAttribute(int expected, int level, int might, int agi, int cha, int inte) {
-        Character character = LevelUpTo(new(null, null, might, agi, cha, inte), level);
+        Character character = LevelUpTo(new(new Commander(), new Human(), might, agi, cha, inte, null, null), level);
         Assert.That(character.Prime, Is.EqualTo(expected));
     }
 
