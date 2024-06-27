@@ -11,7 +11,7 @@ public class AttributeTests {
     [TestCase(4, false, 4, 5)]
     [TestCase(7, false, 7, 20)]
     public void Attribute_ValueTest(int expected, bool isSave, int value, int level) {
-        Character thecharacter = LevelUpTo(new(new Commander(), new Human()), level);
+        Character thecharacter = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
         Attribute attribute = new(() => thecharacter.CombatMastery, value, isSave, () => thecharacter.AttributeLimit);
 
         Assert.That((int)attribute, Is.EqualTo(expected));
@@ -23,7 +23,7 @@ public class AttributeTests {
     [TestCase(false, 10, 20)]
     public void Attribute_ValueTest_Invalid(bool isSave, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
-            Character thecharacter = LevelUpTo(new(new Commander(), new Human()), level);
+            Character thecharacter = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
             Attribute attribute = new(() => thecharacter.CombatMastery, value, isSave, () => thecharacter.AttributeLimit);
         });
     }
@@ -32,19 +32,9 @@ public class AttributeTests {
     [TestCase(2, true, 1, 1)]
     [TestCase(3, true, 1, 4)]
     public void Attribute_SaveTest(int expected, bool isSave, int value, int level) {
-        Character thecharacter = LevelUpTo(new(new Commander(), new Human()), level);
+        Character thecharacter = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
         Attribute attribute = new(() => thecharacter.CombatMastery, value, isSave, () => thecharacter.AttributeLimit);
 
         Assert.That(attribute.Save, Is.EqualTo(expected));
-    }
-
-    private Character LevelUpTo(Character character, int level) {
-        for (int i = character.Level; i < level; ++i) {
-            if (character.Level == 10) {
-                character.CharacterClass.SelectPrestigeClass(new Martial());
-            }
-            character.LevelUp();
-        }
-        return character;
     }
 }

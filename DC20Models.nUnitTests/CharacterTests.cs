@@ -14,7 +14,7 @@ public class CharacterTests {
     [TestCase(9, 17)]
     [TestCase(10, 20)]
     public void CombatMastery_CalcTest(int expected, int level) {
-        Character character = LevelUpTo(new(new Commander(), new Human()), level);
+        Character character = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
         Assert.That(character.CombatMastery, Is.EqualTo(expected));
     }
 
@@ -28,7 +28,7 @@ public class CharacterTests {
     [TestCase(6, 18)]
     [TestCase(7, 20)]
     public void AttributeLimit(int expected, int level) {
-        Character character = LevelUpTo(new(new Commander(), new Human()), level);
+        Character character = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
         Assert.That(character.AttributeLimit, Is.EqualTo(expected));
     }
 
@@ -38,7 +38,7 @@ public class CharacterTests {
     [TestCase(3, 1, 1, 2, -2, 3)]
     [TestCase(3, 1, 3, 3, 0, -2)]
     public void PrimeAttribute(int expected, int level, int might, int agi, int cha, int inte) {
-        Character character = LevelUpTo(new(new Commander(), new Human(), might, agi, cha, inte, null, null), level);
+        Character character = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human(), might, agi, cha, inte, null, null), level);
         Assert.That(character.Prime, Is.EqualTo(expected));
     }
 
@@ -48,17 +48,7 @@ public class CharacterTests {
     public void HPValue(int expected, int level, int might, int agi, int cha, int inte, Type characterClass, Type ancestry) {
         var characterClassInstance = Activator.CreateInstance(characterClass) as BaseCharacterClass;
         var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
-        Character character = LevelUpTo(new(characterClassInstance!, ancestryInstance!, might, agi, cha, inte, null, null), level);
+        Character character = UnitTestHelpers.LevelUpTo(new Character(characterClassInstance!, ancestryInstance!, might, agi, cha, inte, null, null), level);
         Assert.That(character.HealthPoints, Is.EqualTo(expected));
-    }
-
-    private Character LevelUpTo(Character character, int level) {
-        for(int i = character.Level; i < level; ++i) {
-            if (character.Level == 10) {
-                character.CharacterClass.SelectPrestigeClass(new Martial());
-            }
-            character.LevelUp();
-        }
-        return character;
     }
 }
