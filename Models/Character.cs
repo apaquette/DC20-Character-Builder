@@ -1,10 +1,26 @@
-﻿namespace Models;
+﻿using Models.Ancestries;
+using Models.Classes;
+
+
+namespace Models;
 
 public class Character {
-    public string? PlayerName { get; set; }
+    public string? Player { get; set; }
     public string? Name { get; set; }
     public int Level { get; private set; }
     public int CombatMastery => (int)Math.Ceiling((double)Level / 2);
+
+    public ICharacterClass CharacterClass {get; private set;}
+    public IAncestry Ancestry { get; private set; }
+    
+    public int HealthPoints => 6 + Level + Might + CharacterClass.BonusHP + Ancestry.BonusHP;
+
+    // ATTRIBUTES
+    public int Prime => (new int[] {Might, Agility, Charisma, Intelligence}).Max(x => x);
+    public Attribute Might { get; }
+    public Attribute Agility { get; }
+    public Attribute Charisma { get; }
+    public Attribute Intelligence { get; }
     public int AttributeLimit {
         get {
             return Level switch {
@@ -17,15 +33,8 @@ public class Character {
         }
     }
 
-    // ATTRIBUTES
-    public int Prime => (new int[] {Might, Agility, Charisma, Intelligence}).Max(x => x);
-    public Attribute Might { get; }
-    public Attribute Agility { get; }
-    public Attribute Charisma { get; }
-    public Attribute Intelligence { get; }
-
-    public Character(string? playerName = null, string? name = null, int might = 0, int agi = 0, int cha = 0, int inte = 0) {
-        PlayerName = playerName;
+    public Character(ICharacterClass characterClass, IAncestry ancestry, int might = 0, int agi = 0, int cha = 0, int inte = 0, string? player = null, string? name = null) {
+        Player = player;
         Name = name;
         Level = 1;
 
@@ -33,6 +42,9 @@ public class Character {
         Agility = new(() => CombatMastery, agi, false, () => AttributeLimit);
         Charisma = new(() => CombatMastery, cha, false, () => AttributeLimit);
         Intelligence = new(() => CombatMastery, inte, false, () => AttributeLimit);
+
+        CharacterClass = characterClass;
+        Ancestry = ancestry;
     }
 
     public void LevelUp() {
