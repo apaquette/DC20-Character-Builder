@@ -28,6 +28,10 @@ public class CharacterTests {
     }
 
     [TestCase(3, 1, 3, 1, 2, -2)]
+    [TestCase(3, 1, -2, 3, 1, 2)]
+    [TestCase(3, 1, 2, -2, 3, 1)]
+    [TestCase(3, 1, 1, 2, -2, 3)]
+    [TestCase(3, 1, 3, 3, 0, -2)]
     public void PrimeAttribute(int expected, int level, int might, int agi, int cha, int inte) {
         Character character = LevelUpTo(new(null, null, might, agi, cha, inte), level);
         Assert.That(character.Prime, Is.EqualTo(expected));
