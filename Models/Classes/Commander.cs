@@ -1,14 +1,18 @@
 ﻿namespace Models.Classes;
-public class Commander : ICharacterClass {
+public class Commander : BaseCharacterClass {
 
-    public string Name => "Commander";
+    public override string Name => "Commander";
 
-    public int BonusHP => 1;
+    public override int Level => _level;
 
-    public int Level { get; private set; }
+    public override int BonusHP => _bonusHP;
+
+    protected override Func<int, int> BonusHPCalculation { get; set; }
 
     public Commander() {
-        Level = 1;
+        _level = 1;
+        _bonusHP = 1;
+
+        BonusHPCalculation = (_level) => 1;
     }
-    public void LevelUp() => ++Level;
 }

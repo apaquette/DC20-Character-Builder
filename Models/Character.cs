@@ -10,7 +10,7 @@ public class Character {
     public int Level => CharacterClass.Level;
     public int CombatMastery => (int)Math.Ceiling((double)Level / 2);
 
-    public ICharacterClass CharacterClass {get; private set;}
+    public BaseCharacterClass CharacterClass {get; private set;}
     public IAncestry Ancestry { get; private set; }
     
     public int HealthPoints => 6 + Level + Might + CharacterClass.BonusHP + Ancestry.BonusHP;
@@ -33,7 +33,7 @@ public class Character {
         }
     }
 
-    public Character(ICharacterClass characterClass, IAncestry ancestry, int might = 0, int agi = 0, int cha = 0, int inte = 0, string? player = null, string? name = null) {
+    public Character(BaseCharacterClass characterClass, IAncestry ancestry, int might = 0, int agi = 0, int cha = 0, int inte = 0, string? player = null, string? name = null) {
         Player = player;
         Name = name;
 

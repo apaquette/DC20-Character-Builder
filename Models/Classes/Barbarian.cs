@@ -1,14 +1,18 @@
 ﻿namespace Models.Classes;
-public class Barbarian : ICharacterClass {
+public class Barbarian : BaseCharacterClass {
+    
+    public override string Name => "Barbarian";
 
-    public string Name => "Barbarian";
+    public override int Level => _level;
 
-    public int BonusHP => 1;
+    public override int BonusHP => _bonusHP;
 
-    public int Level { get; private set; }
+    protected override Func<int, int> BonusHPCalculation { get; set; }
+
     public Barbarian() {
-        Level = 1;
-    }
+        _level = 1;
+        _bonusHP = 1;
 
-    public void LevelUp() => ++Level;
+        BonusHPCalculation = (int level) => 1;
+    }
 }
