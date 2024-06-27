@@ -44,6 +44,7 @@ public class CharacterTests {
     }
 
     [TestCase(11, 1, 3, 1, 2, -2, typeof(Commander), typeof(Human))]
+    [TestCase(11, 1, 3, 1, 2, -2, typeof(Barbarian), typeof(Human))]
     public void HPValue(int expected, int level, int might, int agi, int cha, int inte, Type characterClass, Type ancestry) {
         var characterClassInstance = Activator.CreateInstance(characterClass) as ICharacterClass;
         var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
@@ -57,5 +58,4 @@ public class CharacterTests {
         }
         return character;
     }
-    
 }
