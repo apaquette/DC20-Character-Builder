@@ -5,8 +5,6 @@ public class Commander : BaseCharacterClass {
 
     public override int Level => _level;
 
-    public override int BonusHP => _bonusHP;
-
     protected override Func<int, int> BonusHPCalculation { get; set; }
 
     public Commander() {

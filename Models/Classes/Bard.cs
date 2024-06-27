@@ -5,8 +5,6 @@ public class Bard : BaseCharacterClass {
 
     public override int Level => _level;
 
-    public override int BonusHP => _bonusHP;
-
     protected override Func<int, int> BonusHPCalculation { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     public Bard() {

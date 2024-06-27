@@ -1,4 +1,5 @@
-﻿using Models.Classes;
+﻿using Models.Classes.Prestige;
+using Models.Classes;
 using Models;
 
 namespace DC20Models.nUnitTests; 
