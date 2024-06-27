@@ -46,7 +46,7 @@ public class CharacterTests {
     [TestCase(11, 1, 3, 1, 2, -2, typeof(Barbarian), typeof(Human))]
     [TestCase(10, 1, 3, 1, 2, -2, typeof(Bard), typeof(Human))]
     public void HPValue(int expected, int level, int might, int agi, int cha, int inte, Type characterClass, Type ancestry) {
-        var characterClassInstance = Activator.CreateInstance(characterClass) as ICharacterClass;
+        var characterClassInstance = Activator.CreateInstance(characterClass) as BaseCharacterClass;
         var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
         Character character = LevelUpTo(new(characterClassInstance!, ancestryInstance!, might, agi, cha, inte, null, null), level);
         Assert.That(character.HealthPoints, Is.EqualTo(expected));
@@ -54,7 +54,10 @@ public class CharacterTests {
 
     private Character LevelUpTo(Character character, int level) {
         for(int i = character.Level; i < level; ++i) {
-            character.LevelUp(); 
+            if (character.Level == 10) {
+                character.CharacterClass.SelectPrestigeClass(new Martial());
+            }
+            character.LevelUp();
         }
         return character;
     }

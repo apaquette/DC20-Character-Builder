@@ -40,6 +40,9 @@ public class AttributeTests {
 
     private Character LevelUpTo(Character character, int level) {
         for (int i = character.Level; i < level; ++i) {
+            if (character.Level == 10) {
+                character.CharacterClass.SelectPrestigeClass(new Martial());
+            }
             character.LevelUp();
         }
         return character;
