@@ -22,7 +22,7 @@ public class Character {
     public Attribute Charisma { get; }
     public Attribute Intelligence { get; }
 
-    public Character(BaseClass characterClass, IAncestry ancestry, int might, int agi, int cha, int inte, string? player = null, string? name = null) {
+    public Character(BaseClass characterClass, IAncestry ancestry, int might, bool mightIsSaveProf, int agi, bool agiIsSaveProf, int cha, bool chaIsSaveProf, int inte, bool inteIsSaveProf, string? player = null, string? name = null) {
         Player = player;
         Name = name;
 
@@ -30,10 +30,10 @@ public class Character {
         CharacterClass.AssignCharacter(this);
         Ancestry = ancestry;
 
-        Might = new(() => CombatMastery, might, false, () => Level);
-        Agility = new(() => CombatMastery, agi, false, () => Level);
-        Charisma = new(() => CombatMastery, cha, false, () => Level);
-        Intelligence = new(() => CombatMastery, inte, false, () => Level);
+        Might = new(() => CombatMastery, might, mightIsSaveProf, () => Level);
+        Agility = new(() => CombatMastery, agi, agiIsSaveProf, () => Level);
+        Charisma = new(() => CombatMastery, cha, chaIsSaveProf, () => Level);
+        Intelligence = new(() => CombatMastery, inte, inteIsSaveProf, () => Level);
 
 
         //HealthPoints = () => 6 + Level + Might;
