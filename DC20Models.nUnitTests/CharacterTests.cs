@@ -28,20 +28,6 @@ public class CharacterTests {
         Assert.That(character.CombatMastery, Is.EqualTo(expected));
     }
 
-    //[TestCase(3, 1)]
-    //[TestCase(3, 3)]
-    //[TestCase(4, 5)]
-    //[TestCase(4, 7)]
-    //[TestCase(5, 10)]
-    //[TestCase(5, 13)]
-    //[TestCase(6, 15)]
-    //[TestCase(6, 18)]
-    //[TestCase(7, 20)]
-    //public void AttributeLimit(int expected, int level) {
-    //    Character character = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
-    //    Assert.That(character.AttributeLimit, Is.EqualTo(expected));
-    //}
-
     [TestCase(3, 1, typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
     [TestCase(3, 1, typeof(Barbarian), typeof(Human), -2, true, 3, true, 1, false, 2, false)]
     [TestCase(3, 1, typeof(Barbarian), typeof(Human), 1, true, 2, true, -2, false, 3, false)]

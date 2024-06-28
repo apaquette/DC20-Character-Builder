@@ -1,4 +1,7 @@
 ﻿using Models;
+using Models.Ancestries;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel.Design;
 using Attribute = Models.Attribute;
 
 namespace DC20Models.nUnitTests;
@@ -9,6 +12,8 @@ public class AttributeTests {
     [TestCase(3, false, 3, 1)]
     [TestCase(4, false, 4, 5)]
     [TestCase(7, false, 7, 20)]
+    [TestCase(5, false, 5, 10)]
+    [TestCase(6, false, 6, 15)]
     public void Attribute_ValueTest(int expected, bool isSave, int value, int level) {
         var CombatMastery = (int)Math.Ceiling((double)level / 2);
 
@@ -20,6 +25,9 @@ public class AttributeTests {
     [TestCase(false, -3, 1)]
     [TestCase(false, 4, 1)]
     [TestCase(false, 5, 5)]
+    [TestCase(false, 10, 20)]
+    [TestCase(false, 6, 10)]
+    [TestCase(false, 7, 15)]
     [TestCase(false, 10, 20)]
     public void Attribute_ValueTest_Invalid(bool isSave, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
