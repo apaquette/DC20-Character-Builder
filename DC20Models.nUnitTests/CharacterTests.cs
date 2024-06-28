@@ -4,9 +4,6 @@ using Models.Classes;
 
 namespace DC20Models.nUnitTests;
 public class CharacterTests {
-    private IAncestry Human = new Human();
-
-
     [TestCase(1,1,typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
     [TestCase(1, 2, typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
     [TestCase(3, 5, typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
