@@ -10,10 +10,10 @@ public class Character {
     public int Level => CharacterClass.Level;
     public int CombatMastery => (int)Math.Ceiling((double)Level / 2);
 
-    public BaseCharacterClass CharacterClass {get; private set;}
+    public BaseClass CharacterClass { get; private set; }
     public IAncestry Ancestry { get; private set; }
-    
-    public int HealthPoints => 6 + Level + Might + CharacterClass.BonusHP + Ancestry.BonusHP;
+
+    public Func<int> HealthPoints { get; private set; } // + CharacterClass.BonusHP + Ancestry.BonusHP;
 
     // ATTRIBUTES
     public int Prime => (new int[] {Might, Agility, Charisma, Intelligence}).Max(x => x);
@@ -21,30 +21,23 @@ public class Character {
     public Attribute Agility { get; }
     public Attribute Charisma { get; }
     public Attribute Intelligence { get; }
-    public int AttributeLimit {
-        get {
-            return Level switch {
-                < 5 => 3,
-                < 10 => 4,
-                < 15 => 5,
-                < 20 => 6,
-                _ => 7
-            };
-        }
-    }
 
-    public Character(BaseCharacterClass characterClass, IAncestry ancestry, int might = 0, int agi = 0, int cha = 0, int inte = 0, string? player = null, string? name = null) {
+    public Character(BaseClass characterClass, IAncestry ancestry, int might, int agi, int cha, int inte, string? player = null, string? name = null) {
         Player = player;
         Name = name;
 
         CharacterClass = characterClass;
+        CharacterClass.AssignCharacter(this);
         Ancestry = ancestry;
 
-        Might = new(() => CombatMastery, might, false, () => AttributeLimit);
-        Agility = new(() => CombatMastery, agi, false, () => AttributeLimit);
-        Charisma = new(() => CombatMastery, cha, false, () => AttributeLimit);
-        Intelligence = new(() => CombatMastery, inte, false, () => AttributeLimit);
+        Might = new(() => CombatMastery, might, false, () => Level);
+        Agility = new(() => CombatMastery, agi, false, () => Level);
+        Charisma = new(() => CombatMastery, cha, false, () => Level);
+        Intelligence = new(() => CombatMastery, inte, false, () => Level);
 
+
+        //HealthPoints = () => 6 + Level + Might;
+        HealthPoints = () => 6 + Level + Might + CharacterClass.BonusHP();
     }
 
     public void LevelUp() {
