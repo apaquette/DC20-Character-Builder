@@ -4,6 +4,7 @@ using Models.Classes;
 using Attribute = Models.Attribute;
 
 namespace DC20Models.nUnitTests; 
+//TODO: rework attribute unit tests
 public class AttributeTests {
     [TestCase(1, false, 1, 1)]
     [TestCase(-2, false, -2, 1)]
@@ -11,8 +12,18 @@ public class AttributeTests {
     [TestCase(4, false, 4, 5)]
     [TestCase(7, false, 7, 20)]
     public void Attribute_ValueTest(int expected, bool isSave, int value, int level) {
-        Character thecharacter = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
-        Attribute attribute = new(() => thecharacter.CombatMastery, value, isSave, () => thecharacter.AttributeLimit);
+        var character = new Character.Builder()
+            .SetClass(new Barbarian())
+            .SetAncestry(new Human())
+            .SetMight(true, 3)
+            .SetAgility(true, 1)
+            .SetCharisma(false, 2)
+            .SetIntelligence(false, -2)
+            .Build();
+        
+        character.LevelUpTo(level);
+
+        Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
 
         Assert.That((int)attribute, Is.EqualTo(expected));
     }
@@ -23,8 +34,18 @@ public class AttributeTests {
     [TestCase(false, 10, 20)]
     public void Attribute_ValueTest_Invalid(bool isSave, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
-            Character thecharacter = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
-            Attribute attribute = new(() => thecharacter.CombatMastery, value, isSave, () => thecharacter.AttributeLimit);
+            var character = new Character.Builder()
+            .SetClass(new Barbarian())
+            .SetAncestry(new Human())
+            .SetMight(true, 3)
+            .SetAgility(true, 1)
+            .SetCharisma(false, 2)
+            .SetIntelligence(false, -2)
+            .Build();
+
+            character.LevelUpTo(level);
+
+            Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
         });
     }
 
@@ -32,8 +53,18 @@ public class AttributeTests {
     [TestCase(2, true, 1, 1)]
     [TestCase(3, true, 1, 4)]
     public void Attribute_SaveTest(int expected, bool isSave, int value, int level) {
-        Character thecharacter = UnitTestHelpers.LevelUpTo(new Character(new Commander(), new Human()), level);
-        Attribute attribute = new(() => thecharacter.CombatMastery, value, isSave, () => thecharacter.AttributeLimit);
+
+        var character = new Character.Builder()
+            .SetClass(new Barbarian())
+            .SetAncestry(new Human())
+            .SetMight(true, value)
+            .SetAgility(true, 1)
+            .SetCharisma(false, 2)
+            .SetIntelligence(false, -2)
+            .Build();
+
+        character.LevelUpTo(level);
+        Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
 
         Assert.That(attribute.Save, Is.EqualTo(expected));
     }

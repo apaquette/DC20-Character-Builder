@@ -13,8 +13,9 @@ public class BarbarianTests {
     [TestCase(9,9)]
     [TestCase(10,10)]
     public void BonusHealthPoints(int expected, int Level) {
-        Barbarian barbarian = (Barbarian)UnitTestHelpers.LevelUpTo(new Barbarian(), Level);
+        Barbarian barbarian = new Barbarian();
+        barbarian.LevelUpTo(Level);
 
-        Assert.That(barbarian.BonusHP, Is.EqualTo(expected));
+        Assert.That(barbarian.BonusHP(), Is.EqualTo(expected));
     }
 }
