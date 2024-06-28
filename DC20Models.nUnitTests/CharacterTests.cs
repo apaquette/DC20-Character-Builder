@@ -7,14 +7,17 @@ public class CharacterTests {
     private IAncestry Human = new Human();
 
 
-    [TestCase(1, 1)]
-    [TestCase(1, 2)]
-    [TestCase(3, 5)]
-    [TestCase(6, 12)]
-    [TestCase(9, 17)]
-    [TestCase(10, 20)]
-    public void CombatMastery_CalcTest(int expected, int level) {
-        Character character = new(new Barbarian(), new Human(), 3, 1, 2, -2);
+    [TestCase(1,1,typeof(Barbarian), typeof(Human), 3, 1, 2, -2)]
+    [TestCase(1, 2, typeof(Barbarian), typeof(Human), 3, 1, 2, -2)]
+    [TestCase(3, 5, typeof(Barbarian), typeof(Human), 3, 1, 2, -2)]
+    [TestCase(6, 12, typeof(Barbarian), typeof(Human), 3, 1, 2, -2)]
+    [TestCase(9, 17, typeof(Barbarian), typeof(Human), 3, 1, 2, -2)]
+    [TestCase(10, 20, typeof(Barbarian), typeof(Human), 3, 1, 2, -2)]
+    public void CombatMastery_CalcTest(int expected, int level, Type baseClass, Type ancestry, int might, int agility, int charisma, int intelligence) {
+        var characterClassInstance = Activator.CreateInstance(baseClass) as BaseClass;
+        var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
+        Character character = new(characterClassInstance!, ancestryInstance!, might, agility, charisma, intelligence);
+
         character.LevelUpTo(level);
         Assert.That(character.CombatMastery, Is.EqualTo(expected));
     }
