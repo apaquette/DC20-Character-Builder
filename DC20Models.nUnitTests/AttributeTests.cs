@@ -1,9 +1,7 @@
 ﻿using Models;
-using Models.Ancestries;
-using Models.Classes;
 using Attribute = Models.Attribute;
 
-namespace DC20Models.nUnitTests; 
+namespace DC20Models.nUnitTests;
 //TODO: rework attribute unit tests
 public class AttributeTests {
     [TestCase(1, false, 1, 1)]
@@ -12,18 +10,9 @@ public class AttributeTests {
     [TestCase(4, false, 4, 5)]
     [TestCase(7, false, 7, 20)]
     public void Attribute_ValueTest(int expected, bool isSave, int value, int level) {
-        var character = new Character.Builder()
-            .SetClass(new Barbarian())
-            .SetAncestry(new Human())
-            .SetMight(true, 3)
-            .SetAgility(true, 1)
-            .SetCharisma(false, 2)
-            .SetIntelligence(false, -2)
-            .Build();
-        
-        character.LevelUpTo(level);
+        var CombatMastery = (int)Math.Ceiling((double)level / 2);
 
-        Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
+        Attribute attribute = new(() => CombatMastery, value, isSave, () => level);
 
         Assert.That((int)attribute, Is.EqualTo(expected));
     }
@@ -34,18 +23,10 @@ public class AttributeTests {
     [TestCase(false, 10, 20)]
     public void Attribute_ValueTest_Invalid(bool isSave, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
-            var character = new Character.Builder()
-            .SetClass(new Barbarian())
-            .SetAncestry(new Human())
-            .SetMight(true, 3)
-            .SetAgility(true, 1)
-            .SetCharisma(false, 2)
-            .SetIntelligence(false, -2)
-            .Build();
 
-            character.LevelUpTo(level);
+            var CombatMastery = (int)Math.Ceiling((double)level / 2);
 
-            Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
+            Attribute attribute = new(() => CombatMastery, value, isSave, () => level);
         });
     }
 
@@ -53,18 +34,9 @@ public class AttributeTests {
     [TestCase(2, true, 1, 1)]
     [TestCase(3, true, 1, 4)]
     public void Attribute_SaveTest(int expected, bool isSave, int value, int level) {
+        var CombatMastery = (int)Math.Ceiling((double)level / 2);
 
-        var character = new Character.Builder()
-            .SetClass(new Barbarian())
-            .SetAncestry(new Human())
-            .SetMight(true, value)
-            .SetAgility(true, 1)
-            .SetCharisma(false, 2)
-            .SetIntelligence(false, -2)
-            .Build();
-
-        character.LevelUpTo(level);
-        Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
+        Attribute attribute = new(() => CombatMastery, value, isSave, () => level);
 
         Assert.That(attribute.Save, Is.EqualTo(expected));
     }
