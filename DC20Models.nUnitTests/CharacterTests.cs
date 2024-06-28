@@ -4,9 +4,6 @@ using Models.Classes;
 
 namespace DC20Models.nUnitTests;
 public class CharacterTests {
-    private IAncestry Human = new Human();
-
-
     [TestCase(1,1,typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
     [TestCase(1, 2, typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
     [TestCase(3, 5, typeof(Barbarian), typeof(Human), 3, true, 1, true, 2, false, -2, false)]
@@ -16,9 +13,18 @@ public class CharacterTests {
     public void CombatMastery_CalcTest(int expected, int level, Type baseClass, Type ancestry, int might, bool mSave, int agility, bool aSave, int charisma, bool cSave, int intelligence, bool iSave) {
         var characterClassInstance = Activator.CreateInstance(baseClass) as BaseClass;
         var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
-        Character character = new(characterClassInstance!, ancestryInstance!, might, mSave, agility, aSave, charisma, cSave, intelligence, iSave);
+
+        var character = new Character.Builder()
+            .SetClass(characterClassInstance!)
+            .SetAncestry(ancestryInstance!)
+            .SetMight(mSave, might)
+            .SetAgility(aSave, agility)
+            .SetCharisma(cSave, charisma)
+            .SetIntelligence(iSave, intelligence)
+            .Build();
 
         character.LevelUpTo(level);
+
         Assert.That(character.CombatMastery, Is.EqualTo(expected));
     }
 
@@ -43,8 +49,18 @@ public class CharacterTests {
     public void PrimeAttribute(int expected, int level, Type baseClass, Type ancestry, int might, bool mSave, int agility, bool aSave, int charisma, bool cSave, int intelligence, bool iSave) {
         var characterClassInstance = Activator.CreateInstance(baseClass) as BaseClass;
         var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
-        Character character = new(characterClassInstance!, ancestryInstance!, might, mSave, agility, aSave, charisma, cSave, intelligence, iSave);
+
+        var character = new Character.Builder()
+            .SetClass(characterClassInstance!)
+            .SetAncestry(ancestryInstance!)
+            .SetMight(mSave, might)
+            .SetAgility(aSave, agility)
+            .SetCharisma(cSave, charisma)
+            .SetIntelligence(iSave, intelligence)
+            .Build();
+
         character.LevelUpTo(level);
+
         Assert.That(character.Prime, Is.EqualTo(expected));
     }
 
@@ -55,7 +71,15 @@ public class CharacterTests {
     public void HPValue(int expected, int level, Type baseClass, Type ancestry, int might, bool mSave, int agility, bool aSave, int charisma, bool cSave, int intelligence, bool iSave) {
         var characterClassInstance = Activator.CreateInstance(baseClass) as BaseClass;
         var ancestryInstance = Activator.CreateInstance(ancestry) as IAncestry;
-        Character character = new(characterClassInstance!, ancestryInstance!, might, mSave, agility, aSave, charisma, cSave, intelligence, iSave);
+
+        var character = new Character.Builder()
+            .SetClass(characterClassInstance!)
+            .SetAncestry(ancestryInstance!)
+            .SetMight(mSave, might)
+            .SetAgility(aSave, agility)
+            .SetCharisma(cSave, charisma)
+            .SetIntelligence(iSave, intelligence)
+            .Build();
 
         character.LevelUpTo(level);
         
