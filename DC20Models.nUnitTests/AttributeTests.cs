@@ -12,7 +12,15 @@ public class AttributeTests {
     [TestCase(4, false, 4, 5)]
     [TestCase(7, false, 7, 20)]
     public void Attribute_ValueTest(int expected, bool isSave, int value, int level) {
-        Character character = new (new Barbarian(), new Human(), 3, 1, 2, -2);
+        var character = new Character.Builder()
+            .SetClass(new Barbarian())
+            .SetAncestry(new Human())
+            .SetMight(true, 3)
+            .SetAgility(true, 1)
+            .SetCharisma(false, 2)
+            .SetIntelligence(false, -2)
+            .Build();
+        
         character.LevelUpTo(level);
 
         Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
@@ -26,8 +34,17 @@ public class AttributeTests {
     [TestCase(false, 10, 20)]
     public void Attribute_ValueTest_Invalid(bool isSave, int value, int level) {
         Assert.Throws<InvalidAttributeException>(() => {
-            Character character = new (new Barbarian(), new Human(), value, 1, 2, -2);
+            var character = new Character.Builder()
+            .SetClass(new Barbarian())
+            .SetAncestry(new Human())
+            .SetMight(true, 3)
+            .SetAgility(true, 1)
+            .SetCharisma(false, 2)
+            .SetIntelligence(false, -2)
+            .Build();
+
             character.LevelUpTo(level);
+
             Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
         });
     }
@@ -36,7 +53,16 @@ public class AttributeTests {
     [TestCase(2, true, 1, 1)]
     [TestCase(3, true, 1, 4)]
     public void Attribute_SaveTest(int expected, bool isSave, int value, int level) {
-        Character character = new(new Barbarian(), new Human(), value, 1, 2, -2);
+
+        var character = new Character.Builder()
+            .SetClass(new Barbarian())
+            .SetAncestry(new Human())
+            .SetMight(true, value)
+            .SetAgility(true, 1)
+            .SetCharisma(false, 2)
+            .SetIntelligence(false, -2)
+            .Build();
+
         character.LevelUpTo(level);
         Attribute attribute = new(() => character.CombatMastery, value, isSave, () => character.Level);
 

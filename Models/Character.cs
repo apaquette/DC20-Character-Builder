@@ -43,7 +43,7 @@ public class Character {
     }
 
 
-    public class CharacterBuilder {
+    public class Builder {
         private string? _playerName;
         private string? _name;
 
@@ -59,38 +59,38 @@ public class Character {
         private bool _intelligenceProficient;
         private int _intelligenceValue;
 
-        public CharacterBuilder SetPlayerName(string name) {
+        public Builder SetPlayerName(string name) {
             _playerName = name;
             return this;
         }
-        public CharacterBuilder SetCharacterName(string name) {
+        public Builder SetCharacterName(string name) {
             _name = name;
             return this;
         }
-        public CharacterBuilder SetClass(BaseClass characterClass) {
+        public Builder SetClass(BaseClass characterClass) {
             _characterClass = characterClass;
             return this;
         }
-        public CharacterBuilder SetAncestry(IAncestry ancestry) {
+        public Builder SetAncestry(IAncestry ancestry) {
             _ancestry = ancestry;
             return this;
         }
-        public CharacterBuilder SetMight(bool proficient, int value) {
+        public Builder SetMight(bool proficient, int value) {
             _mightProficient = proficient;
             _mightValue = value;
             return this;
         }
-        public CharacterBuilder SetAgility(bool proficient, int value) {
+        public Builder SetAgility(bool proficient, int value) {
             _agilityProficient = proficient;
             _agilityValue = value;
             return this;
         }
-        public CharacterBuilder SetCharisma(bool proficient, int value) {
+        public Builder SetCharisma(bool proficient, int value) {
             _charismaProficient = proficient;
             _charismaValue = value;
             return this;
         }
-        public CharacterBuilder SetIntelligence(bool proficient, int value) {
+        public Builder SetIntelligence(bool proficient, int value) {
             _intelligenceProficient = proficient;
             _intelligenceValue = value;
             return this;
